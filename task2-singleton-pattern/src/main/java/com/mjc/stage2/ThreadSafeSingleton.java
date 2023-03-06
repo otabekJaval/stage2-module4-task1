@@ -3,7 +3,7 @@ package com.mjc.stage2;
 import java.util.Objects;
 
 public class ThreadSafeSingleton {
-    private static ThreadSafeSingleton instance;
+    private static volatile ThreadSafeSingleton instance;
 
     public static synchronized ThreadSafeSingleton getInstance() {
 
