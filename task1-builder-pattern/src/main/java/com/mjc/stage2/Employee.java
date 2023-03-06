@@ -145,16 +145,4 @@ public class Employee {
                ", carNumber='" + carNumber + '\'' +
                '}';
     }
-
-    public static void main(String[] args) {
-
-
-        final Employee jack = Employee.getBuilder()
-                .setName("jack")
-                .setEmail("")
-                .build();
-
-
-        System.out.println(jack);
-    }
 }
