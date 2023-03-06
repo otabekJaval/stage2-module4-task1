@@ -5,11 +5,15 @@ import java.util.Objects;
 public class ThreadSafeSingleton {
     private static volatile ThreadSafeSingleton instance;
 
+
+    private ThreadSafeSingleton() {
+    }
+
     public static synchronized ThreadSafeSingleton getInstance() {
 
-        if ( Objects.isNull(instance) ) {
+        if ( instance==null ) {
             synchronized ( ThreadSafeSingleton.class ) {
-                if ( Objects.isNull(instance) ) {
+                if (instance==null ) {
                     instance = new ThreadSafeSingleton();
                 }
             }
