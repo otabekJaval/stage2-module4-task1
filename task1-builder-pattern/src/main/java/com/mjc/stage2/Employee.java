@@ -1,10 +1,7 @@
 package com.mjc.stage2;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import java.util.Objects;
 
-@EqualsAndHashCode
-@ToString
 public class Employee {
     private String name;
     private String lastName;
@@ -14,6 +11,15 @@ public class Employee {
     private String carNumber;
 
     public Employee() {
+    }
+
+    public Employee(String name , String lastName , String position , String phone , String email , String carNumber) {
+        this.name = name;
+        this.lastName = lastName;
+        this.position = position;
+        this.phone = phone;
+        this.email = email;
+        this.carNumber = carNumber;
     }
 
     public String getName() {
@@ -69,6 +75,86 @@ public class Employee {
     }
 
     public static class EmployeeBuilder {
-        // Write your code here!
+        private String name;
+        private String lastName;
+        private String position;
+        private String phone;
+        private String email;
+        private String carNumber;
+
+        public EmployeeBuilder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public EmployeeBuilder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public EmployeeBuilder setPosition(String position) {
+            this.position = position;
+            return this;
+        }
+
+        public EmployeeBuilder setPhone(String phone) {
+            this.phone = phone;
+            return this;
+        }
+
+
+        public EmployeeBuilder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public EmployeeBuilder setCarNumber(String carNumber) {
+            this.carNumber = carNumber;
+            return this;
+        }
+
+        public Employee build() {
+            return new Employee(this.name , this.lastName , this.position , this.phone , this.email , this.carNumber);
+        }
+
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        Employee employee = ( Employee ) o;
+        return Objects.equals(name , employee.name) && Objects.equals(lastName , employee.lastName) && Objects.equals(position , employee.position) && Objects.equals(phone , employee.phone) && Objects.equals(email , employee.email) && Objects.equals(carNumber , employee.carNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name , lastName , position , phone , email , carNumber);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+               "name='" + name + '\'' +
+               ", lastName='" + lastName + '\'' +
+               ", position='" + position + '\'' +
+               ", phone='" + phone + '\'' +
+               ", email='" + email + '\'' +
+               ", carNumber='" + carNumber + '\'' +
+               '}';
+    }
+
+    public static void main(String[] args) {
+
+
+        final Employee jack = Employee.getBuilder()
+                .setName("jack")
+                .setEmail("")
+                .build();
+
+
+        System.out.println(jack);
     }
 }
