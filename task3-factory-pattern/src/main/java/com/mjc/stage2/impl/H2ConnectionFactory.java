@@ -1,6 +1,7 @@
 package com.mjc.stage2.impl;
 
 import com.mjc.stage2.ConnectionFactory;
+import com.mjc.stage2.exceptions.ConnectionCreationException;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class H2ConnectionFactory implements ConnectionFactory {
             Class.forName(properties.getProperty("jdbc_driver"));
             return DriverManager.getConnection(properties.getProperty("db_url") , properties.getProperty("user") , properties.getProperty("password"));
         } catch ( ClassNotFoundException | SQLException ex ) {
-            throw new RuntimeException(ex);
+            throw new ConnectionCreationException(ex);
         }
     }
 }
