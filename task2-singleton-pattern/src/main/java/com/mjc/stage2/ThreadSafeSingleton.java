@@ -5,7 +5,7 @@ import java.util.Objects;
 public class ThreadSafeSingleton {
     private static ThreadSafeSingleton instance;
 
-    public static ThreadSafeSingleton getInstance() {
+    public static synchronized ThreadSafeSingleton getInstance() {
 
         if ( Objects.isNull(instance) ) {
             synchronized ( ThreadSafeSingleton.class ) {
